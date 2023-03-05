@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** card */
+@layer components {
+    /** children card 1 */
+    .card > figcaption:first-child {
+        @apply opacity-100 transition-[opacity] duration-500 ease-in-out;
+    }
+
+    .card:hover > figcaption:first-child {
+        @apply opacity-0 transition-[opacity] duration-500 ease-in-out;
+    }
+
+    /** children card 2 */
+    .card > figcaption:nth-child(2) {
+        @apply opacity-0 transition-[opacity] duration-500 ease-in-out;
+    }
+
+    .card:hover > figcaption:nth-child(2) {
+        @apply flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-100 transition-[opacity] duration-500 ease-in-out;
+        animation: fadeIn 1s ease-in;
+    }
+
+    /** animation */
+    @keyframes fadeIn {
+        0% {
+            @apply opacity-0;
+        }
+        100% {
+            @apply opacity-100;
+        }
+    }
+}
