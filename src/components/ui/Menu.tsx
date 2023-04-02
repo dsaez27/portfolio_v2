@@ -10,15 +10,15 @@ export const Menu = () => {
     transform duration-300 bg-white`;
 
     return (
-        <section className="MOBILE-MENU flex sm:hidden ">
+        <section className="flex sm:hidden ">
             <button
-                className="flex flex-col justify-center items-center group"
+                className="group flex flex-col items-center justify-center"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div
                     className={`${genericHamburgerLine} ${
                         isOpen
-                            ? "rotate-45 translate-y-2 group-hover:opacity-100 "
+                            ? "translate-y-2 rotate-45 group-hover:opacity-100 "
                             : "group-hover:opacity-100"
                     }`}
                 />
@@ -30,7 +30,7 @@ export const Menu = () => {
                 <div
                     className={`${genericHamburgerLine} ${
                         isOpen
-                            ? "-rotate-45 -translate-y-3 group-hover:opacity-100"
+                            ? "-translate-y-3 -rotate-45 group-hover:opacity-100"
                             : "group-hover:opacity-100"
                     }`}
                 />
@@ -38,9 +38,9 @@ export const Menu = () => {
             {isOpen &&
                 createPortal(
                     <CSSTransition in={isOpen} timeout={300} classNames="menu-mobile" unmountOnExit>
-                        <div className="items-center bg-quaternary flex flex-col h-screen justify-evenly left-0 top-0 w-full z-10 fixed">
-                            <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-white uppercase">
-                                <li className="cursor-pointer pr-8 transition my-8">
+                        <div className="fixed left-0 top-0 z-10 flex h-screen w-full flex-col items-center justify-evenly bg-darken">
+                            <ul className="flex min-h-[250px] flex-col items-center justify-between uppercase text-white">
+                                <li className="my-8 cursor-pointer pr-8 transition">
                                     <Link
                                         to="home"
                                         spy={true}
@@ -48,12 +48,12 @@ export const Menu = () => {
                                         offset={-70}
                                         duration={500}
                                         onClick={() => setIsOpen(false)}
-                                        className="hover:text-primary hover:underline hover:underline-offset-8 transition duration-300 ease-in-out"
+                                        className="navbar-underline-animation cursor-pointer text-white"
                                     >
                                         Inicio
                                     </Link>
                                 </li>
-                                <li className="cursor-pointer pr-8 transition my-8">
+                                <li className="my-8 cursor-pointer pr-8 transition">
                                     <Link
                                         to="about"
                                         spy={true}
@@ -61,12 +61,12 @@ export const Menu = () => {
                                         offset={-70}
                                         duration={500}
                                         onClick={() => setIsOpen(false)}
-                                        className="hover:text-primary hover:underline hover:underline-offset-8 transition duration-300 ease-in-out"
+                                        className="navbar-underline-animation cursor-pointer text-white"
                                     >
                                         Sobre Mí
                                     </Link>
                                 </li>
-                                <li className="cursor-pointer pr-8 transition my-8">
+                                <li className="my-8 cursor-pointer pr-8 transition">
                                     <Link
                                         to="skills"
                                         spy={true}
@@ -74,12 +74,12 @@ export const Menu = () => {
                                         offset={-70}
                                         duration={500}
                                         onClick={() => setIsOpen(false)}
-                                        className="hover:text-primary hover:underline hover:underline-offset-8 transition duration-300 ease-in-out"
+                                        className="navbar-underline-animation cursor-pointer text-white"
                                     >
                                         Skills
                                     </Link>
                                 </li>
-                                <li className="cursor-pointer pr-8 transition my-8">
+                                <li className="my-8 cursor-pointer pr-8 transition">
                                     <Link
                                         to="projects"
                                         spy={true}
@@ -87,12 +87,12 @@ export const Menu = () => {
                                         offset={-70}
                                         duration={500}
                                         onClick={() => setIsOpen(false)}
-                                        className="hover:text-primary hover:underline hover:underline-offset-8 transition duration-300 ease-in-out"
+                                        className="navbar-underline-animation cursor-pointer text-white"
                                     >
                                         Proyectos
                                     </Link>
                                 </li>
-                                <li className="cursor-pointer pr-8 transition my-8">
+                                <li className="my-8 cursor-pointer pr-8 transition">
                                     <Link
                                         to="contact"
                                         spy={true}
@@ -100,7 +100,7 @@ export const Menu = () => {
                                         offset={-70}
                                         duration={500}
                                         onClick={() => setIsOpen(false)}
-                                        className="hover:text-primary hover:underline hover:underline-offset-8 transition duration-300 ease-in-out"
+                                        className="navbar-underline-animation cursor-pointer text-white"
                                     >
                                         Contacto
                                     </Link>

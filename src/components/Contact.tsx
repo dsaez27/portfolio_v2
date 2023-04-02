@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { useMutation } from "react-query";
@@ -17,9 +17,14 @@ const ContactSchema = Yup.object().shape({
     message: Yup.string().required("Message is required"),
 });
 
-const site_key: string = "6Lf1L5AkAAAAAF5Azw24Eq2V-rJsQbU5mbG76-N4";
+const site_key: string = "6LejMg8lAAAAAIT0Hf80tZZPyAw-eZpHK3ZPj_rQ";
 
 export const Contact = () => {
+    const [serverError, setServerError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<boolean | null>(null);
+    const [reCaptchaValue, setReCaptchaValue] = useState<string | null>(null);
+    const [darkMode, setDarkMode] = useState<boolean | null>(null);
+
     const {
         register,
         handleSubmit,
@@ -29,15 +34,11 @@ export const Contact = () => {
         resolver: yupResolver(ContactSchema),
     });
 
-    const [serverError, setServerError] = useState<string | null>(null);
-    const [success, setSuccess] = useState<boolean | null>(null);
-    const [reCaptchaValue, setReCaptchaValue] = useState<string | null>(null);
-
     const reCaptchaRef = useRef<ReCAPTCHA>(null);
 
     const { mutate, status } = useMutation(
         async (data: FormValues) => {
-            const response = await fetch("/api/contact", {
+            const response = await fetch("http://localhost:5000/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -64,13 +65,21 @@ export const Contact = () => {
         }
     );
 
-    const onSubmit = (data: { name: string; email: string; message: string }) => {
-        mutate(data);
+    const onChange = (value: string | null) => {
+        setReCaptchaValue(value);
     };
 
-    const onChange = (value: string | null) => {
-        console.log("Captcha value:", value);
+    const onSubmit = (data: FormValues) => {
+        console.log(data);
+        if (reCaptchaValue) {
+            mutate(data);
+        }
     };
+
+    useEffect(() => {
+        localStorage.getItem("theme") === "dark" ? setDarkMode(true) : setDarkMode(false);
+        console.log(darkMode);
+    }, []);
 
     return (
         <section id="contact" className="w-full">
@@ -86,7 +95,7 @@ export const Contact = () => {
                     type="text"
                     placeholder="Nombre"
                     id="name"
-                    className={`form-input h-10 w-full rounded bg-quaternary p-2 text-sm text-white focus:outline-none ${
+                    className={`form-input h-10 w-full bg-quaternary p-2 text-sm text-white focus:outline-none ${
                         errors.name ? "border-red-500" : ""
                     }`}
                 />
@@ -98,7 +107,7 @@ export const Contact = () => {
                     type="email"
                     placeholder="Email"
                     id="email"
-                    className={`form-input h-10 w-full rounded bg-quaternary p-2 text-sm text-white autofill:bg-quaternary focus:outline-none ${
+                    className={`form-input h-10 w-full bg-quaternary p-2 text-sm text-white autofill:bg-quaternary focus:outline-none ${
                         errors.email ? "border-red-500" : ""
                     }`}
                 />
@@ -112,7 +121,7 @@ export const Contact = () => {
                     placeholder="Mensaje"
                     rows={5}
                     cols={50}
-                    className={`form-textarea w-full rounded bg-quaternary p-2 text-sm text-white focus:outline-none ${
+                    className={`form-textarea w-full bg-quaternary p-2 text-sm text-white focus:outline-none ${
                         errors.message ? "border-primary" : ""
                     }`}
                 />
@@ -126,11 +135,11 @@ export const Contact = () => {
                     <p className="mb-6 text-xs italic text-green-500">Message sent successfully!</p>
                 )}
 
-                <ReCAPTCHA sitekey={site_key} onChange={onChange} theme="dark" ref={reCaptchaRef} />
+                <ReCAPTCHA sitekey={site_key} onChange={onChange} ref={reCaptchaRef} />
 
                 <button
                     type="submit"
-                    className={`z-10 inline rounded bg-primary p-4 text-sm font-semibold text-white duration-500 ease-in-out hover:bg-opacity-80
+                    className={`z-10 inline bg-primary p-4 text-sm font-semibold text-white duration-500 ease-in-out hover:bg-opacity-80
                     ${status === "loading" ? "cursor-not-allowed opacity-50" : ""}`}
                     disabled={status === "loading"}
                 >

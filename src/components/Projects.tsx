@@ -17,7 +17,7 @@ export const Projects = () => {
                 {projects.map((project) => {
                     return (
                         <figure
-                            className="card relative h-full w-full cursor-pointer rounded-sm bg-center bg-cover bg-no-repeat text-left text-base text-white transition duration-500 ease-in-out"
+                            className="card relative h-full w-full cursor-pointer bg-cover bg-center bg-no-repeat text-left text-base text-white transition duration-500 ease-in-out"
                             key={project.id}
                             style={{
                                 backgroundImage: `url(${pathImages(project.image)})`,
@@ -34,10 +34,10 @@ export const Projects = () => {
                             </figcaption>
                             {/** buttons */}
                             <figcaption className="z-2 absolute inset-0 hidden p-2 transition duration-500 ease-in-out">
-                                <button className="w-24 mb-2 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-opacity-80">
+                                <button className="mb-2 w-24 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-secondary">
                                     Ver Código
                                 </button>
-                                <button className="w-24 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-opacity-80">
+                                <button className="w-24 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-secondary">
                                     Demo
                                 </button>
                             </figcaption>

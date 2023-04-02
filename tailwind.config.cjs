@@ -4,25 +4,28 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                // Primary colors
-                primary: "#f44653",
-                secondary: "##f5646f",
-                tertiary: "#100426",
-                quaternary: "#0c031e",
-                quinary: "#f5f5f5",
-                // Gradient colors
-                gradientGreen: "#86efac",
-                gradientBlue: "#3b82f6",
-                gradientPurple: "#9333ea",
+                dark: "#212336",
+                //darken 10%
+                darken: "#1c1e2b",
+                primary: "#3bba9c",
+                secondary: "#30987c",
+                tertiary: "#2E3047",
+                quaternary: "#43455c",
+                quinary: "#5a5c73",
+
+                //Scrollbar colors
+                scrollbarBG: "#cfd8dc",
+                scrollbarThumbBG: "#4b5153",
             },
             backgroundImage: {
-                gradient: "linear-gradient(to right, #86efac, #3b82f6, #9333ea)",
                 project: "linear-gradient(to top, transparent, #0c031e)",
-                card: "linear-gradient(to top, #0c031e 5%, transparent 90%)",
+                card: "linear-gradient(to top, #0c031e 20%, transparent 80%)",
+                underline: "none repeat scroll 0 0 transparent",
             },
+            transition: {},
             animation: {
                 astronaut: "astronaut 10s ease infinite",
-                text: "text 10s linear infinite",
+                underline: "transform 0.25s ease-out",
             },
             keyframes: {
                 astronaut: {
@@ -33,14 +36,18 @@ module.exports = {
                         transform: "translateY(-50px)",
                     },
                 },
-                text: {
-                    "0%, 100%": {
-                        "background-size": "200% 200%",
-                        "background-position": "left center",
+                underline: {
+                    "0%": {
+                        width: "0%",
+                        background: "#f44653",
                     },
                     "50%": {
-                        "background-size": "200% 200%",
-                        "background-position": "right center",
+                        width: "50%",
+                        background: "#f44653",
+                    },
+                    "100%": {
+                        width: "50%",
+                        background: "#f44653",
                     },
                 },
             },
@@ -50,4 +57,5 @@ module.exports = {
         },
     },
     plugins: [],
+    darkMode: "class",
 };

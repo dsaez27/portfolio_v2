@@ -1,71 +1,94 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { Menu } from "./Menu";
 
 export const Navbar = () => {
+    const [bgOpacity, setBgOpacity] = useState(0);
+
+    function handleScroll() {
+        const scrollPercentage = Math.floor((window.scrollY / window.innerHeight) * 100);
+        const rounded = Math.round(scrollPercentage / 5) * 5;
+        rounded <= 75 ? setBgOpacity(rounded) : setBgOpacity(75);
+    }
+
+    useEffect(() => {
+        document.addEventListener("scroll", handleScroll);
+        return () => {
+            document.removeEventListener("scroll", handleScroll);
+        };
+    }, [bgOpacity]);
+
     return (
-        <nav className="max-sm:px-2 sm:px-4 py-2.5 bg-quaternary opacity-80 fixed w-full z-50">
-            <div className="container flex flex-wrap items-center justify-between mx-auto max-w-4xl">
-                <h2 className="self-center text-xl font-bold whitespace-nowrap dark:text-white first-letter:text-primary cursor-default">
+        <nav
+            className={`navbar fixed z-50 w-full bg-darken py-2.5 transition duration-1000 selection:ease-in-out max-sm:px-2 sm:px-4`}
+            style={{ "--tw-bg-opacity": bgOpacity / 100 } as any}
+        >
+            <div className="container mx-auto flex max-w-4xl flex-wrap items-center justify-between">
+                <h2 className="cursor-default self-center whitespace-nowrap text-xl font-bold text-white first-letter:text-primary">
                     DSÁEZ
                 </h2>
-                <div className="flex max-sm:hidden text-quinary font-medium">
-                    <Link
-                        to="home"
-                        spy={true}
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className=" cursor-pointer pr-8 hover:text-primary transition"
-                    >
-                        <span>Inicio</span>
-                    </Link>
-                    <Link
-                        to="about"
-                        spy={true}
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className="cursor-pointer pr-8 hover:text-primary transition"
-                    >
-                        <span>Sobre Mí</span>
-                    </Link>
-                    <Link
-                        to="skills"
-                        spy={true}
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className=""
-                    >
-                        <span className="cursor-pointer pr-8 hover:text-primary transition">
+                <ul className="flex gap-6 font-medium max-sm:hidden">
+                    <li>
+                        <Link
+                            to="home"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="navbar-underline-animation cursor-pointer text-white"
+                        >
+                            Inicio
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="about"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="navbar-underline-animation cursor-pointer text-white"
+                        >
+                            Sobre Mí
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="skills"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="navbar-underline-animation cursor-pointer text-white"
+                        >
                             Skills
-                        </span>
-                    </Link>
-                    <Link
-                        to="projects"
-                        spy={true}
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className=""
-                    >
-                        <span className="cursor-pointer pr-8 hover:text-primary transition">
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="projects"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="navbar-underline-animation cursor-pointer text-white"
+                        >
                             Proyectos
-                        </span>
-                    </Link>
-                    <Link
-                        to="contact"
-                        spy={true}
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className=""
-                    >
-                        <span className="cursor-pointer pr-8 hover:text-primary transition">
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="contact"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="navbar-underline-animation cursor-pointer text-white"
+                        >
                             Contacto
-                        </span>
-                    </Link>
-                </div>
+                        </Link>
+                    </li>
+                </ul>
                 <Menu />
             </div>
         </nav>

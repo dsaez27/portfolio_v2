@@ -8,7 +8,7 @@ import { Footer } from "./components/ui/Footer";
 
 export const App = () => {
     return (
-        <div className="w-full bg-tertiary">
+        <>
             <Navbar />
             <div className="container mx-auto flex max-w-4xl flex-wrap items-center justify-between px-4">
                 <Home />
@@ -18,7 +18,6 @@ export const App = () => {
                 <Contact />
             </div>
             <Footer />
-            
-        </div>
+        </>
     );
 };
