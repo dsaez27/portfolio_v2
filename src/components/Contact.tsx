@@ -4,20 +4,22 @@ import * as Yup from "yup";
 import { useMutation } from "react-query";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ReCAPTCHA from "react-google-recaptcha";
+import axios from "axios";
 
 interface FormValues {
     name: string;
     email: string;
     message: string;
+    reCaptchaValue: string | null;
 }
 
 const ContactSchema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    message: Yup.string().required("Message is required"),
+    name: Yup.string().required("Nombre es requerido"),
+    email: Yup.string().email("Invalid email").required("Email es requerido"),
+    message: Yup.string().required("Mensaje es requerido"),
 });
 
-const site_key: string = "6LejMg8lAAAAAIT0Hf80tZZPyAw-eZpHK3ZPj_rQ";
+const site_key: string = "6LeAG4slAAAAAN0ER59FUnK102kZi3hcn-9sDHtC";
 
 export const Contact = () => {
     const [serverError, setServerError] = useState<string | null>(null);
@@ -38,17 +40,13 @@ export const Contact = () => {
 
     const { mutate, status } = useMutation(
         async (data: FormValues) => {
-            const response = await fetch("http://localhost:5000/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
+            const response = await axios.post("http://localhost:5001/submit-form", {
+                ...data,
+                reCaptchaValue,
             });
 
-            if (!response.ok) {
-                const { message } = await response.json();
-                throw new Error(message);
+            if (!response.data.success) {
+                throw new Error("Something went wrong");
             }
         },
         {
@@ -70,16 +68,12 @@ export const Contact = () => {
     };
 
     const onSubmit = (data: FormValues) => {
-        console.log(data);
         if (reCaptchaValue) {
             mutate(data);
+        } else {
+            setServerError("Por favor verifica que no eres un robot");
         }
     };
-
-    useEffect(() => {
-        localStorage.getItem("theme") === "dark" ? setDarkMode(true) : setDarkMode(false);
-        console.log(darkMode);
-    }, []);
 
     return (
         <section id="contact" className="w-full">
@@ -87,7 +81,7 @@ export const Contact = () => {
                 Contacto
             </h2>
             <form
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit((data) => onSubmit(data))}
                 className="my-10 flex w-1/2 flex-col items-start gap-2 max-md:w-full"
             >
                 <input
@@ -129,13 +123,18 @@ export const Contact = () => {
                     <p className="text-xs italic text-primary">{errors.message.message}</p>
                 )}
 
+                <ReCAPTCHA
+                    sitekey={site_key}
+                    onChange={onChange}
+                    ref={reCaptchaRef}
+                    theme="dark"
+                />
+
                 {serverError && <p className="mb-6 text-xs italic text-red-500">{serverError}</p>}
 
                 {success === true && (
                     <p className="mb-6 text-xs italic text-green-500">Message sent successfully!</p>
                 )}
-
-                <ReCAPTCHA sitekey={site_key} onChange={onChange} ref={reCaptchaRef} />
 
                 <button
                     type="submit"
