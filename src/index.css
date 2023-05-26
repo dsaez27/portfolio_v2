@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/** card */
 @layer components {
     /** Scrollbar */
     body::-webkit-scrollbar {
@@ -26,23 +25,57 @@
         @apply bg-scrollbarThumbBG opacity-75;
     }
 
-    /** children card 1 */
-    .card > figcaption:first-child {
-        @apply opacity-100 transition-[opacity] duration-500 ease-in-out;
+    /** cards */
+    .project-heading {
+        @apply text-3xl font-semibold text-primary after:mt-1 after:block after:h-1 after:w-20 after:bg-primary;
     }
 
-    .card:hover > figcaption:first-child {
-        @apply opacity-0 transition-[opacity] duration-500 ease-in-out;
+    .project-grid {
+        @apply my-10 grid justify-items-center gap-3;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-auto-rows: minmax(200px, auto);
     }
 
-    /** children card 2 */
-    .card > figcaption:nth-child(2) {
-        @apply opacity-0 transition-[opacity] duration-500 ease-in-out;
+    .project-card {
+        @apply relative h-full w-full cursor-pointer bg-cover bg-center bg-no-repeat text-left text-base text-white transition duration-500 ease-in-out;
     }
 
-    .card:hover > figcaption:nth-child(2) {
-        @apply flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-100 transition-[opacity] duration-500 ease-in-out;
+    .project-content {
+        @apply absolute inset-0 flex flex-col justify-end bg-card p-2 transition duration-500 ease-in-out;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .project-card:hover .project-content {
+        @apply bg-black bg-opacity-50 opacity-0 transition duration-500 ease-in-out;
+    }
+
+    .project-buttons {
+        @apply absolute inset-0 hidden p-2 transition duration-500 ease-in-out;
+    }
+
+    .project-card:hover .project-buttons {
+        @apply flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-100 transition duration-500 ease-in-out;
         animation: fadeIn 1s ease-in;
+        cursor: default;
+    }
+
+    .project-title {
+        @apply text-lg opacity-100 transition duration-500 ease-in-out;
+    }
+
+    .project-description {
+        @apply text-sm opacity-100 transition duration-500 ease-in-out;
+    }
+
+    .project-code-button {
+        @apply mb-2 w-24 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-secondary;
+        cursor: pointer;
+    }
+
+    .project-demo-button {
+        @apply w-24 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-secondary;
+        cursor: pointer;
     }
 
     /** animation */
@@ -68,4 +101,8 @@
     .navbar-underline-animation:hover::before {
         @apply scale-x-100;
     }
+}
+
+* {
+    behavior: smooth;
 }
