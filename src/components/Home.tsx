@@ -1,5 +1,5 @@
 import { Link } from "react-scroll";
-import { pathFiles, pathImages } from "../helpers/path";
+import { pathImages } from "../helpers/path";
 
 export const Home = () => {
     return (
