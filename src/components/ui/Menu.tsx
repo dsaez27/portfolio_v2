@@ -10,7 +10,7 @@ export const Menu = () => {
     transform duration-300 bg-white`;
 
     return (
-        <section className="flex sm:hidden ">
+        <section className="sm:hidden ">
             <button
                 className="group flex flex-col items-center justify-center"
                 onClick={() => setIsOpen(!isOpen)}
@@ -37,7 +37,12 @@ export const Menu = () => {
             </button>
             {isOpen &&
                 createPortal(
-                    <CSSTransition in={isOpen} timeout={300} classNames="menu-mobile" unmountOnExit>
+                    <CSSTransition
+                        in={isOpen}
+                        timeout={300}
+                        classNames="menu-mobile"
+                        unmountOnExit
+                    >
                         <div className="fixed left-0 top-0 z-10 flex h-screen w-full flex-col items-center justify-evenly bg-darken">
                             <ul className="flex min-h-[250px] flex-col items-center justify-between uppercase text-white">
                                 <li className="my-8 cursor-pointer pr-8 transition">

@@ -19,13 +19,15 @@ module.exports = {
             },
             backgroundImage: {
                 project: "linear-gradient(to top, transparent, #0c031e)",
-                card: "linear-gradient(to top, #0c031e 20%, transparent 80%)",
+                card: "linear-gradient(to top, #0c031e 0%, transparent 100%)",
                 underline: "none repeat scroll 0 0 transparent",
             },
             transition: {},
             animation: {
                 astronaut: "astronaut 10s ease infinite",
                 underline: "transform 0.25s ease-out",
+                fadeIn: "fadeIn 1s forwards",
+                fadeOut: "fadeOut 1s forwards",
             },
             keyframes: {
                 astronaut: {
@@ -48,6 +50,22 @@ module.exports = {
                     "100%": {
                         width: "50%",
                         background: "#f44653",
+                    },
+                },
+                fadeIn: {
+                    "0%": {
+                        opacity: "0",
+                    },
+                    "100%": {
+                        opacity: "1",
+                    },
+                },
+                fadeOut: {
+                    "0%": {
+                        opacity: "1",
+                    },
+                    "100%": {
+                        opacity: "0",
                     },
                 },
             },

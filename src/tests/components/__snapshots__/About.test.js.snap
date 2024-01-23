@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <About /> Debe de mostrarse correctamente 1`] = `
+<Fragment>
+  <div
+    id="about"
+  />
+  <h1
+    className="title_section"
+  >
+    Sobre mí
+  </h1>
+  <styled.div>
+    <styled.img
+      alt="Astronout"
+    />
+    <styled.img
+      alt="Profile Image"
+    />
+    <styled.div>
+      <h1>
+        Daniel Sáez
+      </h1>
+      <span>
+        Analista Programador
+      </span>
+      <div>
+        <a
+          href="https://www.linkedin.com/in/daniel-s%C3%A1ez-hern%C3%A1ndez-361081115/"
+          rel="noreferrer"
+          target="_blank"
+          title="Linkedin"
+        >
+          <img
+            alt="Linkedin"
+            className="icon_size"
+          />
+        </a>
+        <a
+          href="https://github.com/dsaez27"
+          rel="noreferrer"
+          target="_blank"
+          title="Github"
+        >
+          <img
+            alt="Github"
+            className="icon_size"
+          />
+        </a>
+        <a
+          href="mailto:daniel.s.saez.h@gmail.com"
+          rel="noreferrer"
+          target="_blank"
+          title="Email"
+        >
+          <img
+            alt="Email"
+            className="icon_size"
+          />
+        </a>
+      </div>
+      <p>
+        "Soy amante de la programación, me encantan los desafios, me gusta aprender y trabajar en equipo. Actualmente me encuentro en la realizacion dede algunos cursos para aumentar mis habilidades como desarrollador web."
+      </p>
+      <a
+        rel="noreferrer"
+        target="_blank"
+        title="Descargar CV"
+      >
+        <img
+          alt="CV"
+          className="icon_size"
+        />
+        Descargar CV
+      </a>
+    </styled.div>
+  </styled.div>
+</Fragment>
+`;

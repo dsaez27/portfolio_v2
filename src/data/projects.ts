@@ -1,59 +1,59 @@
 interface Project {
     id: number;
     title: string;
-    description: string;
-    image: string;
+    desc: string;
+    img: string;
     url: string;
-    technologies: string[];
+    techs: string[];
 }
 
 export const projects: Project[] = [
     {
         id: 1,
         title: "Portfolio",
-        description: "Portfolio personal",
-        image: "portfolio.png",
+        desc: "Portfolio personal",
+        img: "portfolio.webp",
         url: "https://github.com/dsaez27/portfolio",
-        technologies: ["React", "React-Router-Dom", "Tailwind"],
+        techs: ["React", "React-Router-Dom", "Tailwind"],
     },
     {
         id: 2,
         title: "Calculadora",
-        description: "Calculadora",
-        image: "calculadora.png",
+        desc: "Calculadora",
+        img: "calculadora.webp",
         url: "https://github.com/dsaez27/Calculadora",
-        technologies: ["React", "NodeJS", "MongoDB"],
+        techs: ["React", "NodeJS", "MongoDB"],
     },
     {
         id: 3,
         title: "Modals",
-        description: "Modals",
-        image: "calculadora.png",
+        desc: "Modals",
+        img: "calculadora.webp",
         url: "https://www.google.com",
-        technologies: ["React", "Styled-components"],
+        techs: ["React", "Styled-components"],
     },
     {
         id: 4,
         title: "Curso React",
-        description: "Curso React",
-        image: "calculadora.png",
+        desc: "Curso React",
+        img: "calculadora.webp",
         url: "https://www.google.com",
-        technologies: ["React", "NodeJS", "MongoDB"],
+        techs: ["React", "NodeJS", "MongoDB"],
     },
     {
         id: 5,
         title: "Ecommerce",
-        description: "Ecommerce",
-        image: "calculadora.png",
+        desc: "Ecommerce",
+        img: "calculadora.webp",
         url: "https://www.google.com",
-        technologies: ["React", "Redux", "NodeJS", "MongoDB"],
+        techs: ["React", "Redux", "NodeJS", "MongoDB"],
     },
     {
         id: 6,
         title: "Journal App",
-        description: "Journal App",
-        image: "calculadora.png",
+        desc: "Journal App",
+        img: "calculadora.webp",
         url: "https://www.google.com",
-        technologies: ["React", "NodeJS", "MongoDB"],
+        techs: ["React", "NodeJS", "MongoDB"],
     },
 ];

@@ -1,25 +1,10 @@
 /**
  * @description
- * This function is used to import all images from a folder.
+ * This function returns the path of file
  * @param name
  * @returns
  * @example
- * pathImages("image.png")
+ * path("logo.webp")
  */
 
-export function pathImages(name: string) {
-    return "/src/assets/images/" + name;
-}
-
-/**
- *  @description
- *  This function is used to import all files from a folder.
- * @param name
- * @returns
- * @example
- * pathFiles("file.pdf")
- */
-
-export function pathFiles(name: string) {
-    return "/src/assets/downloads/" + name;
-}
+export const path = (name: string, folder: string) => "/src/assets/" + folder + "/" + name;

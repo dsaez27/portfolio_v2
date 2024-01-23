@@ -1,2 +1,1 @@
-export { pathFiles, pathImages } from "./path";
-export { lighten, darken } from "./colors";
+export { path } from "./path";

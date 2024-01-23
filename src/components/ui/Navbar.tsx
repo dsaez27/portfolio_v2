@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
 import { Menu } from "./Menu";
 
-export const Navbar = () => {
+const Navbar = () => {
     const [bgOpacity, setBgOpacity] = useState(0);
+    const bgOpacityRef = useRef(bgOpacity);
 
     const handleScroll = useCallback(() => {
         const scrollPercentage = Math.floor(
@@ -13,25 +14,20 @@ export const Navbar = () => {
         rounded <= 75 ? setBgOpacity(rounded) : setBgOpacity(0);
     }, []);
 
-    const bgOpacityRef = useRef(bgOpacity);
-
     useEffect(() => {
         bgOpacityRef.current = bgOpacity;
     }, [bgOpacity]);
 
     useEffect(() => {
-        const handleScrollRef = () => {
-            handleScroll();
-        };
-        document.addEventListener("scroll", handleScrollRef);
+        document.addEventListener("scroll", handleScroll);
         return () => {
-            document.removeEventListener("scroll", handleScrollRef);
+            document.removeEventListener("scroll", handleScroll);
         };
     }, [handleScroll]);
 
     return (
         <nav
-            className={`navbar bg-darken fixed z-50 w-full py-2.5 transition duration-1000 selection:ease-in-out max-sm:px-2 sm:px-4`}
+            className={`navbar fixed z-50 w-full bg-darken py-2.5 transition duration-1000 selection:ease-in-out max-sm:px-2 sm:px-4`}
             style={
                 {
                     "--tw-bg-opacity": bgOpacityRef.current / 100,
@@ -42,7 +38,7 @@ export const Navbar = () => {
                 <h2 className="cursor-default self-center whitespace-nowrap text-xl font-bold text-white first-letter:text-primary">
                     DSÁEZ
                 </h2>
-                <ul className="flex gap-6 font-medium max-sm:hidden">
+                <ul className="flex gap-5 font-medium max-sm:hidden">
                     <li>
                         <Link
                             to="home"
@@ -53,18 +49,6 @@ export const Navbar = () => {
                             className="navbar-underline-animation cursor-pointer text-white"
                         >
                             Inicio
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="about"
-                            spy={true}
-                            smooth={true}
-                            offset={-70}
-                            duration={500}
-                            className="navbar-underline-animation cursor-pointer text-white"
-                        >
-                            Sobre Mí
                         </Link>
                     </li>
                     <li>
@@ -109,3 +93,5 @@ export const Navbar = () => {
         </nav>
     );
 };
+
+export default Navbar;

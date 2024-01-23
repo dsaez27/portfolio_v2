@@ -21,11 +21,10 @@ const ContactSchema = Yup.object().shape({
 
 const site_key: string = "6LeAG4slAAAAAN0ER59FUnK102kZi3hcn-9sDHtC";
 
-export const Contact = () => {
+const Contact = () => {
     const [serverError, setServerError] = useState<string | null>(null);
     const [success, setSuccess] = useState<boolean | null>(null);
     const [reCaptchaValue, setReCaptchaValue] = useState<string | null>(null);
-    const [darkMode, setDarkMode] = useState<boolean | null>(null);
 
     const {
         register,
@@ -40,10 +39,13 @@ export const Contact = () => {
 
     const { mutate, status } = useMutation(
         async (data: FormValues) => {
-            const response = await axios.post("http://localhost:5001/submit-form", {
-                ...data,
-                reCaptchaValue,
-            });
+            const response = await axios.post(
+                "http://localhost:5001/submit-form",
+                {
+                    ...data,
+                    reCaptchaValue,
+                }
+            );
 
             if (!response.data.success) {
                 throw new Error("Something went wrong");
@@ -76,7 +78,7 @@ export const Contact = () => {
     };
 
     return (
-        <section id="contact" className="w-full">
+        <section id="contact" className="h-full w-full">
             <h2 className="after-content-[''] text-3xl font-semibold text-primary after:mt-1  after:block after:h-1 after:w-20 after:bg-primary">
                 Contacto
             </h2>
@@ -94,7 +96,9 @@ export const Contact = () => {
                     }`}
                 />
                 {errors.name && (
-                    <p className="text-xs italic text-primary">{errors.name.message}</p>
+                    <p className="text-xs italic text-primary">
+                        {errors.name.message}
+                    </p>
                 )}
                 <input
                     {...register("email")}
@@ -106,7 +110,9 @@ export const Contact = () => {
                     }`}
                 />
                 {errors.email && (
-                    <p className="text-xs italic text-primary">{errors.email.message}</p>
+                    <p className="text-xs italic text-primary">
+                        {errors.email.message}
+                    </p>
                 )}
 
                 <textarea
@@ -120,7 +126,9 @@ export const Contact = () => {
                     }`}
                 />
                 {errors.message && (
-                    <p className="text-xs italic text-primary">{errors.message.message}</p>
+                    <p className="text-xs italic text-primary">
+                        {errors.message.message}
+                    </p>
                 )}
 
                 <ReCAPTCHA
@@ -130,16 +138,26 @@ export const Contact = () => {
                     theme="dark"
                 />
 
-                {serverError && <p className="mb-6 text-xs italic text-red-500">{serverError}</p>}
+                {serverError && (
+                    <p className="mb-6 text-xs italic text-red-500">
+                        {serverError}
+                    </p>
+                )}
 
                 {success === true && (
-                    <p className="mb-6 text-xs italic text-green-500">Message sent successfully!</p>
+                    <p className="mb-6 text-xs italic text-green-500">
+                        Message sent successfully!
+                    </p>
                 )}
 
                 <button
                     type="submit"
                     className={`z-10 inline bg-primary p-4 text-sm font-semibold text-white duration-500 ease-in-out hover:bg-opacity-80
-                    ${status === "loading" ? "cursor-not-allowed opacity-50" : ""}`}
+                    ${
+                        status === "loading"
+                            ? "cursor-not-allowed opacity-50"
+                            : ""
+                    }`}
                     disabled={status === "loading"}
                 >
                     Submit
@@ -148,3 +166,5 @@ export const Contact = () => {
         </section>
     );
 };
+
+export default Contact;

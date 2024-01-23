@@ -8,4 +8,10 @@ export default defineConfig({
     resolve: {
         alias: [{ find: "@", replacement: "/src" }],
     },
+    server: {
+        watch: {
+            usePolling: true,
+            interval: 100,
+        },
+    },
 });

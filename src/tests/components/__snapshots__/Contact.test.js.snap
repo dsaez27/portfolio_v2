@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <Contact /> Debe de mostrarse correctamente 1`] = `
+Array [
+  <div
+    id="contact"
+  />,
+  <h2
+    className="title_section"
+  >
+    Contacto
+  </h2>,
+  <div
+    className="sc-furwcr fuXKSj"
+  >
+    Array [
+      <form
+        id="form-validation"
+        onSubmit={[Function]}
+      >
+        <label
+          htmlFor="name"
+        >
+          Nombre
+        </label>
+        <input
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Nombre y apellido"
+          type="text"
+        />
+        <p />
+        <label
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Email"
+          type="email"
+        />
+        <p />
+        <label
+          htmlFor="message"
+        >
+          Mensaje
+        </label>
+        <textarea
+          cols="50"
+          id="message"
+          name="message"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Mensaje"
+          rows="10"
+        />
+        <p />
+        <button
+          type="submit"
+        >
+          Enviar
+        </button>
+      </form>,
+      "",
+    ]
+  </div>,
+]
+`;

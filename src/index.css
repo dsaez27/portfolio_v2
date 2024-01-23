@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-    /** Scrollbar */
+    /** Scrollbar **/
     body::-webkit-scrollbar {
         @apply w-2.5;
     }
@@ -25,84 +25,72 @@
         @apply bg-scrollbarThumbBG opacity-75;
     }
 
-    /** cards */
-    .project-heading {
-        @apply text-3xl font-semibold text-primary after:mt-1 after:block after:h-1 after:w-20 after:bg-primary;
+    [data-title]:hover:after {
+        opacity: 1;
+        transition: all 0.5s ease;
+        visibility: visible;
     }
 
-    .project-grid {
-        @apply my-10 grid justify-items-center gap-3;
+    [data-title]:not(:hover):after {
+        opacity: 0;
+        transition: all 0.5s ease;
+        visibility: hidden;
+    }
+
+    [data-title]:after {
+        @apply bg-darken text-white;
+        content: attr(data-title);
+        position: absolute;
+        padding: 1px 5px 2px 5px;
+        bottom: -2em;
+        left: 1em;
+        white-space: nowrap;
+        box-shadow: 1px 1px 3px #222222;
+        opacity: 0;
+        border: 1px solid #fff;
+        z-index: 99999;
+        visibility: hidden;
+        border-radius: 5px;
+    }
+
+    [data-title] {
+        position: relative;
+    }
+
+    /** Cards **/
+    .cards__grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         grid-auto-rows: minmax(200px, auto);
     }
 
-    .project-card {
-        @apply relative h-full w-full cursor-pointer bg-cover bg-center bg-no-repeat text-left text-base text-white transition duration-500 ease-in-out;
+    .card__content:hover > .card__heading,
+    .card__content:hover > .card__desc {
+        @apply animate-fadeOut;
     }
 
-    .project-content {
-        @apply absolute inset-0 flex flex-col justify-end bg-card p-2 transition duration-500 ease-in-out;
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
+    .card__content:not(:hover) > .card__heading,
+    .card__content:not(:hover) > .card__desc {
+        @apply animate-fadeIn;
     }
 
-    .project-card:hover .project-content {
-        @apply bg-black bg-opacity-50 opacity-0 transition duration-500 ease-in-out;
+    .card__content:hover > .card__buttons {
+        @apply animate-fadeIn;
     }
 
-    .project-buttons {
-        @apply absolute inset-0 hidden p-2 transition duration-500 ease-in-out;
+    .card__content:not(:hover) > .card__buttons {
+        @apply animate-fadeOut;
     }
 
-    .project-card:hover .project-buttons {
-        @apply flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-100 transition duration-500 ease-in-out;
-        animation: fadeIn 1s ease-in;
-        cursor: default;
-    }
-
-    .project-title {
-        @apply text-lg opacity-100 transition duration-500 ease-in-out;
-    }
-
-    .project-description {
-        @apply text-sm opacity-100 transition duration-500 ease-in-out;
-    }
-
-    .project-code-button {
-        @apply mb-2 w-24 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-secondary;
-        cursor: pointer;
-    }
-
-    .project-demo-button {
-        @apply w-24 rounded-full bg-primary p-2 text-sm text-white transition duration-500 ease-in-out hover:bg-secondary;
-        cursor: pointer;
-    }
-
-    /** animation */
-    @keyframes fadeIn {
-        0% {
-            @apply opacity-0;
-        }
-        100% {
-            @apply opacity-100;
-        }
-    }
-
-    /** underline span */
+    /** Navbar **/
     .navbar-underline-animation {
-        text-decoration: none;
-        @apply relative;
+        @apply relative decoration-transparent;
     }
 
     .navbar-underline-animation::before {
-        @apply absolute bottom-0 left-0 mt-6 block h-[2px] w-full scale-x-0 bg-white transition-transform duration-300 ease-in-out content-[''];
+        @apply absolute bottom-[-.2rem] left-0 block h-[2px] w-full scale-x-0 bg-white transition-transform duration-300 ease-in-out content-[''];
     }
 
     .navbar-underline-animation:hover::before {
         @apply scale-x-100;
     }
-}
-
-* {
-    behavior: smooth;
 }

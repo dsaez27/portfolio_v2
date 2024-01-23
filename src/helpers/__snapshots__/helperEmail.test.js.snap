@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`helperEmail.validateEmail 0 1`] = `true`;
+
+exports[`helperEmail.validateEmail 1 1`] = `true`;
+
+exports[`helperEmail.validateEmail 2 1`] = `false`;
+
+exports[`helperEmail.validateEmail 3 1`] = `false`;
+
+exports[`helperEmail.validateEmail 4 1`] = `true`;
+
+exports[`helperEmail.validateEmail 5 1`] = `false`;

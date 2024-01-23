@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <Home /> Debe de mostrarse correctamente 1`] = `
+<Fragment>
+  <div
+    id="home"
+  />
+  <v
+    height="100%"
+    id="tsparticles"
+    options={
+      Object {
+        "interactivity": Object {
+          "detect_on": "canvas",
+          "events": Object {
+            "onclick": Object {
+              "enable": false,
+              "mode": "repulse",
+            },
+            "onhover": Object {
+              "enable": false,
+              "mode": "bubble",
+            },
+            "resize": true,
+          },
+          "modes": Object {
+            "bubble": Object {
+              "distance": 250,
+              "duration": 2,
+              "opacity": 0,
+              "size": 0,
+              "speed": 3,
+            },
+            "grab": Object {
+              "distance": 0,
+              "line_linked": Object {
+                "opacity": 1,
+              },
+            },
+            "push": Object {
+              "particles_nb": 4,
+            },
+            "remove": Object {
+              "particles_nb": 2,
+            },
+            "repulse": Object {
+              "distance": 400,
+              "duration": 0.4,
+            },
+          },
+        },
+        "particles": Object {
+          "color": Object {
+            "value": "#ffffff",
+          },
+          "line_linked": Object {
+            "color": "#ffffff",
+            "distance": 150,
+            "enable": false,
+            "opacity": 0.4,
+            "width": 1,
+          },
+          "move": Object {
+            "attract": Object {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 600,
+            },
+            "bounce": false,
+            "direction": "none",
+            "enable": true,
+            "out_mode": "out",
+            "random": true,
+            "speed": 1,
+            "straight": false,
+          },
+          "number": Object {
+            "density": Object {
+              "enable": true,
+              "value_area": 1893.9543399174545,
+            },
+            "value": 246,
+          },
+          "opacity": Object {
+            "anim": Object {
+              "enable": true,
+              "opacity_min": 0,
+              "speed": 1,
+              "sync": false,
+            },
+            "random": true,
+            "value": 1,
+          },
+          "shape": Object {
+            "image": Object {
+              "height": 100,
+              "src": "img/github.webp",
+              "width": 100,
+            },
+            "polygon": Object {
+              "nb_sides": 5,
+            },
+            "stroke": Object {
+              "color": "#000000",
+              "width": 0,
+            },
+            "type": "circle",
+          },
+          "size": Object {
+            "anim": Object {
+              "enable": false,
+              "size_min": 1,
+              "speed": 10,
+              "sync": false,
+            },
+            "random": true,
+            "value": 1,
+          },
+        },
+        "retina_detect": true,
+      }
+    }
+    style={
+      Object {
+        "padding": "0",
+      }
+    }
+    width="100%"
+  />
+  <Draw
+    style={
+      Object {
+        "zIndex": "1",
+      }
+    }
+  />
+  <styled.div
+    style={
+      Object {
+        "zIndex": "2",
+      }
+    }
+  >
+    <styled.h1>
+      Hello I'm a 
+      <br />
+      Front-end Developer
+    </styled.h1>
+    <styled.p>
+      Bienvenido a mi portafolio personal, aquí podrás ver algunos de mis proyectos, con una gran cantidad de componentes, estilos y tecnologías diferentes.
+    </styled.p>
+    <button>
+      Ver Proyectos
+    </button>
+  </styled.div>
+</Fragment>
+`;

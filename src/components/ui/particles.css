@@ -1,0 +1,13 @@
+.tsparticles-canvas-el {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    padding: 0% !important;
+}
+
+@media screen and (max-width: 768px) {
+    .tsparticles-canvas-el {
+        height: 200vh !important;
+    }
+}
